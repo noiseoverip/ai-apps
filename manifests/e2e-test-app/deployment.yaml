@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e2e-test-app
+  namespace: applications
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: e2e-test-app
+  template:
+    metadata:
+      labels:
+        app: e2e-test-app
+    spec:
+      containers:
+      - name: e2e-test-app
+        image: sauliusalisauskas/testappgo:latest
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
