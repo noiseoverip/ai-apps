@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: champi
+  namespace: applications
+spec:
+  selector:
+    app: champi
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080

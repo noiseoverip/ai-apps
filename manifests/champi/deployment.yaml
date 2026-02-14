@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: champi
+  namespace: applications
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: champi
+  template:
+    metadata:
+      labels:
+        app: champi
+    spec:
+      containers:
+      - name: champi
+        image: sauliusalisauskas/champi:latest
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
