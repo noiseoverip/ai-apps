@@ -2,10 +2,10 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: e2e-test-app
-  namespace: default
+  namespace: applications
 spec:
   rules:
-  - host: e2e-test-app.example.com
+  - host: e2e-test-app.tykus.net
     http:
       paths:
       - path: /
