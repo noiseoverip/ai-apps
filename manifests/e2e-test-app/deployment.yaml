@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: e2e-test-app
-        image: nginx:latest
+        image: sauliusalisauskas/testappgo:latest
         ports:
         - containerPort: 8080
         livenessProbe:
