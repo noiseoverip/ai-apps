@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: saulius
+  namespace: applications
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: saulius
+  template:
+    metadata:
+      labels:
+        app: saulius
+    spec:
+      containers:
+      - name: saulius
+        image: sauliusalisauskas/testappgo:latest
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10

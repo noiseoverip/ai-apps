@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: saulius
+  namespace: applications
+spec:
+  rules:
+  - host: saulius.tykus.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: saulius
+            port:
+              number: 80
